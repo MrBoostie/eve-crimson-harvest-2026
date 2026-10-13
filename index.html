@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crimson Harvest 2026 Field Guide</title>
+  <meta name="description" content="A fast field guide for EVE Online Crimson Harvest 2026: what to run, where to go, ship guidance, and token trader picks.">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #08090d;
+      --panel: #141820;
+      --panel-2: #1c2028;
+      --text: #f1eee8;
+      --muted: #b7b3aa;
+      --line: #343844;
+      --blood: #c5252e;
+      --ember: #f06d3a;
+      --gold: #d4b56c;
+      --blue: #6da7d4;
+      --green: #7fc99b;
+      --shadow: rgba(0, 0, 0, .35);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a { color: #8fc5ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-items: end;
+      background:
+        linear-gradient(180deg, rgba(8, 9, 13, .18) 0%, rgba(8, 9, 13, .62) 52%, var(--bg) 100%),
+        linear-gradient(90deg, rgba(8, 9, 13, .78) 0%, rgba(8, 9, 13, .25) 58%, rgba(8, 9, 13, .82) 100%),
+        url("https://images.ctfassets.net/7lhcm73ukv5p/7r5w19zMmZZiqs45wWJn1N/9a32cdf19abdd9bed20062fe50fc8e12/News-EmailHeader_Copy_920x1080.jpg?fm=jpg&w=1600&q=80") center / cover no-repeat;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero-inner {
+      padding: 96px 0 56px;
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      font-size: .82rem;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.05;
+      letter-spacing: 0;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 9vw, 7.8rem);
+      max-width: 9ch;
+      text-wrap: balance;
+    }
+
+    h2 { font-size: clamp(2rem, 5vw, 3.6rem); }
+    h3 { font-size: 1.2rem; }
+
+    .lede {
+      max-width: 740px;
+      margin: 18px 0 0;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: #f8efe0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .pill, .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      background: rgba(12, 14, 20, .68);
+      color: var(--text);
+      border-radius: 6px;
+      box-shadow: 0 10px 30px var(--shadow);
+      backdrop-filter: blur(6px);
+      font-weight: 700;
+    }
+
+    .button {
+      background: linear-gradient(135deg, var(--blood), #8a151c);
+      border-color: rgba(255, 255, 255, .28);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8, 9, 13, .9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    nav .wrap {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 10px 0;
+      scrollbar-width: none;
+    }
+
+    nav a {
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: .9rem;
+      padding: 8px 10px;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      background: var(--panel);
+      text-decoration: none;
+    }
+
+    main { padding: 34px 0 60px; }
+    section { padding: 38px 0; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+    section:last-child { border-bottom: 0; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 420px);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .02));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 18px 38px var(--shadow);
+    }
+
+    .card h3 { margin-bottom: 10px; }
+    .card p { color: var(--muted); margin: 0; }
+    .card ul { margin: 12px 0 0; padding-left: 18px; color: var(--muted); }
+    .card li + li { margin-top: 6px; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      color: #f7dfb0;
+      background: rgba(212, 181, 108, .08);
+      font-size: .82rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .callout {
+      border-left: 4px solid var(--ember);
+      background: rgba(240, 109, 58, .08);
+      padding: 16px 18px;
+      margin: 18px 0;
+    }
+
+    .callout strong { color: #ffd4a6; }
+
+    .flow {
+      display: grid;
+      gap: 12px;
+      counter-reset: steps;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 46px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+      padding: 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .step::before {
+      counter-increment: steps;
+      content: counter(steps);
+      display: grid;
+      place-items: center;
+      width: 38px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--blood);
+      color: white;
+      font-weight: 900;
+    }
+
+    .step h3 { margin-bottom: 5px; }
+    .step p { margin: 0; color: var(--muted); }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 18px 38px var(--shadow);
+    }
+
+    .matrix th, .matrix td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .matrix th {
+      color: #ffe2b0;
+      background: #20242d;
+      font-size: .88rem;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .matrix tr:last-child td { border-bottom: 0; }
+    .matrix td { color: var(--muted); }
+    .matrix strong { color: var(--text); }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .score {
+      display: grid;
+      gap: 10px;
+    }
+
+    .score-row {
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr) 70px;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+    }
+
+    .bar {
+      height: 12px;
+      border-radius: 99px;
+      background: #2a2f39;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--gold), var(--ember));
+    }
+
+    .footer {
+      padding: 30px 0 52px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .sources {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .mini {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero { min-height: 86vh; }
+      .section-head, .split, .grid, .grid.two { grid-template-columns: 1fr; }
+      .matrix { display: block; overflow-x: auto; }
+      .score-row { grid-template-columns: 78px minmax(120px, 1fr) 62px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap hero-inner">
+      <div class="eyebrow">EVE Online event guide / updated 2026-10-13</div>
+      <h1>Crimson Harvest 2026</h1>
+      <p class="lede">A practical field guide for running the event, choosing targets, finding traders, and converting Mutated Blood Samples without accidentally donating your evening to the market abyss.</p>
+      <div class="hero-actions">
+        <a class="button" href="#plan">Start Here</a>
+        <a class="pill" href="#sites">Sites</a>
+        <a class="pill" href="#ships">Ships</a>
+        <a class="pill" href="#traders">Traders</a>
+        <a class="pill" href="#market">Sample Value</a>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Guide sections">
+    <div class="wrap">
+      <a href="#snapshot">Snapshot</a>
+      <a href="#plan">How to Run</a>
+      <a href="#sites">Where</a>
+      <a href="#ships">With What</a>
+      <a href="#criterion">Criterion</a>
+      <a href="#traders">Traders</a>
+      <a href="#market">Spreadsheet Picks</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="snapshot">
+      <div class="section-head">
+        <h2>What matters first</h2>
+        <p>Crimson Harvest runs from October 6 to November 3, 2026. The new wrinkle is Pochven pressure: Blood Raiders and Order of St. Tetrimon are fighting around Triglavian space, with Criterion Ciphers opening solo Criterion of Fitness sites.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Duration</span>
+          <h3>Oct 6 to Nov 3</h3>
+          <p>Daily login rewards, Agency challenges, combat/data sites, token traders, and late-month escalation rewards.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Faction choice</span>
+          <h3>Pick for rewards, not access</h3>
+          <p>Your side changes which Agency tasks score and which SKIN line you earn. You can still shoot and loot both sides.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Risk modifier</span>
+          <h3>Loot fairy goes feral</h3>
+          <p>Pods can drop implants at 50%, and ships outside highsec drop 90% of their loot during the event. Treat lowsec and Pochven like bait has a salary.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="plan">
+      <div class="section-head">
+        <h2>The simple loop</h2>
+        <p>If you just want to undock and make progress, this is the shortest path.</p>
+      </div>
+      <div class="flow">
+        <article class="step">
+          <div>
+            <h3>Choose the opposite targets for Agency points</h3>
+            <p>Blood Raider alignment wants Tetrimon kills/hacks. Tetrimon alignment wants Blood Raider kills/hacks. Loot is fair game either way.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3>Run standard combat or data sites</h3>
+            <p>Combat sites are the steady path for samples, boss drops, and possible rift spawns. Data sites are faster if you can scan, hack, and dodge hunters.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3>Kill optional rift spawns when your ship can handle them</h3>
+            <p>After clearing rooms in Crimson Gauntlet or Tetrimon Base, an Abyssal rift may spawn Rogue Drone, Sleeper, or Triglavian extras. The boss can drop Mutated Blood Samples and Criterion Ciphers.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3>Use ciphers for Criterion of Fitness</h3>
+            <p>These are solo timed Triglavian trials. Faster wave clears raise difficulty and reward quality. Bring serious tank, cap planning, and damage projection.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3>Spend samples at the right trader</h3>
+            <p>Most cosmetics and SKINR items are available everywhere. Faction/officer toys are trader-specific. Check market depth before chasing spreadsheet top spots.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="sites">
+      <div class="section-head">
+        <h2>Where to go</h2>
+        <p>Use the Agency and Probe Scanner. Combat sites are the brawl lane; data sites are the travel-light lane; Hollow Outbreak and Criterion sites are the 2026 advanced lane.</p>
+      </div>
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Activity</th>
+            <th>Where</th>
+            <th>What happens</th>
+            <th>Bring</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Crimson Gauntlet</strong></td>
+            <td>Level 3 Blood Raider combat site</td>
+            <td>Three-room combat chain with EM/Thermal pressure and some Explosive. Boss is Harvest Overseer.</td>
+            <td>Battlecruiser, HAC, strategic cruiser, or marauder-lite comfort. Tank EM/Therm first.</td>
+          </tr>
+          <tr>
+            <td><strong>Tetrimon Base</strong></td>
+            <td>Level 3 Order of St. Tetrimon combat site</td>
+            <td>Three rooms, mostly EM/Thermal with some heavy Kinetic. Boss is Tetrimon Commander.</td>
+            <td>Same hull class as Gauntlet. Add enough application for frigates and destroyers.</td>
+          </tr>
+          <tr>
+            <td><strong>Network Node</strong></td>
+            <td>Highsec data sites</td>
+            <td>Three cans at range, sometimes a fourth bioadaptive cache.</td>
+            <td>Scanning frigate, Data Analyzer, probes, MWD, cloak if possible.</td>
+          </tr>
+          <tr>
+            <td><strong>Network Hub</strong></td>
+            <td>Lowsec data sites</td>
+            <td>Same hacking loop, more hunter pressure, better danger tax.</td>
+            <td>Fast align, cheap hull, d-scan discipline, safes, no autopilot brain.</td>
+          </tr>
+          <tr>
+            <td><strong>Hollow Outbreak</strong></td>
+            <td>Class 1 highsec, Class 2 all space, Class 3 low/null/WH/Pochven</td>
+            <td>Advanced biocybernetic sites scaled from new-player frigates to veteran destroyer/T3D content.</td>
+            <td>C1 basic T1 frigates; C2 destroyers or T2 frigates; C3 stronger destroyer/T3D setups.</td>
+          </tr>
+          <tr>
+            <td><strong>Criterion of Fitness</strong></td>
+            <td>Known space, entered with Criterion Cipher</td>
+            <td>Solo timed Triglavian waves. Faster clears raise fitness score and final cache value.</td>
+            <td>Marauder if you have one. Otherwise a tanky, high-DPS ship you are willing to lose learning.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="ships">
+      <div class="section-head">
+        <h2>With what</h2>
+        <p>These are role guidelines, not sacred fits. The event rewards repeatability more than elegance.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Combat starter</span>
+          <h3>Battlecruiser or HAC</h3>
+          <ul>
+            <li>Prioritize EM/Thermal tank for Blood Raider and Tetrimon rooms.</li>
+            <li>Bring a web or application rigs if your guns hate frigates.</li>
+            <li>Cap booster beats dying nobly to neut pressure.</li>
+            <li>Salvage after if you are not racing site spawns.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">Data runner</span>
+          <h3>Cheap scanner</h3>
+          <ul>
+            <li>Data Analyzer, probe launcher, MWD, cloak if trained.</li>
+            <li>Fit for align time and escape, not killmail beauty.</li>
+            <li>Use cargo scanner to skip bad cans when traffic is hot.</li>
+            <li>Lowsec hubs are not AFK archaeology. Keep d-scan open.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">Criterion runner</span>
+          <h3>Marauder or serious brawler</h3>
+          <ul>
+            <li>Timed waves reward high applied DPS and staying power.</li>
+            <li>Expect Triglavian ramping damage and possible heavy neut bosses.</li>
+            <li>Clear speed controls the difficulty modifier and reward score.</li>
+            <li>Do first attempts in a hull whose loss will not ruin your week.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="callout">
+        <strong>Highsec is safer, not safe.</strong> The event pushes valuable loot into predictable locations. Outside highsec, the 90% loot drop rule makes every shiny fit look like a public loot pinata.
+      </div>
+    </section>
+
+    <section id="criterion">
+      <div class="section-head">
+        <h2>Criterion of Fitness</h2>
+        <p>Use a Criterion Cipher from rift boss drops to enter. The gate closes after one ship passes, so this is a solo performance check.</p>
+      </div>
+      <div class="split">
+        <article class="card">
+          <h3>How scoring works</h3>
+          <p>You fight three Triglavian waves. Each wave has a time threshold. Faster clears add more fitness and raise the next wave's challenge. Max score is 15, which controls the final cache quality.</p>
+          <div class="score" aria-label="Criterion timing thresholds">
+            <div class="score-row"><strong>Sufficient</strong><div class="bar"><span style="width:55%"></span></div><span>4:00</span></div>
+            <div class="score-row"><strong>Efficient</strong><div class="bar"><span style="width:76%"></span></div><span>2:15</span></div>
+            <div class="score-row"><strong>Glorified</strong><div class="bar"><span style="width:100%"></span></div><span>1:30</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Practical read</h3>
+          <ul>
+            <li>If wave one feels spicy, do not chase the highest score.</li>
+            <li>Elite Hospodar-style pressure becomes more likely as score rises.</li>
+            <li>Boss quality scales: Drekavac, Leshak, or the nasty Babaroga tier at top score.</li>
+            <li>The reward cache is the reason to push; survival is the reason to be honest.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="traders">
+      <div class="section-head">
+        <h2>Trader locations</h2>
+        <p>Mutated Blood Samples buy event goods. Some rewards are universal; some are tied to the faction trader.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Blood Raiders</span>
+          <h3>KFIE-Z, Anila, Sosala, Ahtila</h3>
+          <p>Check here for Blood Raider-aligned officer/module options such as Sarikusa-themed Nosferatu rewards.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Order of Tetrimon</span>
+          <h3>Ibani, Kamela, Sakenta, Shera</h3>
+          <p>Check here for Tetrimon-aligned rewards, including Horm-style neutralizer options and Tetrimon SKINs.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Triglavian Collective</span>
+          <h3>Raravoss, Vale, Otela, Gammel</h3>
+          <p>Check here for Triglavian-flavored rewards, including the huge-ticket Zorya disintegrator line.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="market">
+      <div class="section-head">
+        <h2>Spreadsheet picks</h2>
+        <p>Based on the local spreadsheet export refreshed 2026-10-13 12:03 UTC. These are market signals, not commandments. Verify volume, location, taxes, and whether the listed order is real enough to matter.</p>
+      </div>
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Samples</th>
+            <th>Trader</th>
+            <th>Lowest sell ISK/sample</th>
+            <th>Read</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mobile Sanguine Harvester Blueprint Crate</strong></td>
+            <td>50</td>
+            <td>All traders</td>
+            <td>10,000,000</td>
+            <td>Huge spreadsheet standout. Confirm supply and actual sale velocity before converting a pile.</td>
+          </tr>
+          <tr>
+            <td><strong>Clotted Bronze Metallic - Unlimited</strong></td>
+            <td>300</td>
+            <td>All traders</td>
+            <td>996,333</td>
+            <td>Strong SKINR component signal, likely easier to understand than ultra-rare officer toys.</td>
+          </tr>
+          <tr>
+            <td><strong>Overflowing Harvest - Limited</strong></td>
+            <td>200</td>
+            <td>All traders</td>
+            <td>594,500</td>
+            <td>Good nominal return; limited component demand can move abruptly.</td>
+          </tr>
+          <tr>
+            <td><strong>Bleak Stigmata - Limited</strong></td>
+            <td>200</td>
+            <td>All traders</td>
+            <td>500,000</td>
+            <td>Simple mid-cost conversion target if orders hold.</td>
+          </tr>
+          <tr>
+            <td><strong>Imperial Navy Multispectrum Energized Membrane Blueprint Crate</strong></td>
+            <td>450</td>
+            <td>Tetrimon</td>
+            <td>442,667</td>
+            <td>Faction-specific, useful if you are already near Tetrimon traders.</td>
+          </tr>
+          <tr>
+            <td><strong>Sarikusa's Capital Energy Nosferatu / Horm's Capital Energy Neutralizer</strong></td>
+            <td>50,000</td>
+            <td>Blood Raider / Tetrimon</td>
+            <td>500,000 buy ISK/sample</td>
+            <td>Top buy-order signal, but capital/officer markets are thin. Do the math before becoming inventory.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="sources">
+      <div class="section-head">
+        <h2>Sources</h2>
+        <p>This is a field guide built from official event notes, patch notes, EVE University mechanics, and the spreadsheet export Robby linked.</p>
+      </div>
+      <div class="sources">
+        <a class="pill" href="https://www.eveonline.com/news/view/crimson-harvest-the-bloodgates-are-open">CCP event post</a>
+        <a class="pill" href="https://www.eveonline.com/news/view/patch-notes-version-24-01">Patch notes 24.01</a>
+        <a class="pill" href="https://wiki.eveuniversity.org/Crimson_Harvest_(2026)">EVE University 2026 page</a>
+        <a class="pill" href="https://docs.google.com/spreadsheets/d/1vEo_a-0cbCfM0EiWuNErkUKg1tK3y2bI-4sJtB4pTDs/htmlview#gid=0">Trader spreadsheet</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>Unofficial capsuleer guide. EVE Online and related marks belong to CCP Games. Market values are volatile and may become lies with impressive speed.</p>
+    </div>
+  </footer>
+</body>
+</html>
